@@ -1,0 +1,195 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/lista" text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>Apontamento de Parada</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-segment [(ngModel)]="aba" mode="md" color="primary" class="ion-padding-top ion-padding-horizontal">
+    <ion-segment-button value="operador">
+      <ion-label>Operador</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="manutentor">
+      <ion-label>Manutenção</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <div *ngIf="aba === 'operador'" class="ion-padding">
+    <ion-list class="ion-no-margin" lines="full">
+      
+      <ion-row>
+        <ion-col size="6">
+          <ion-item>
+            <ion-input label="Linha" labelPlacement="floating" [(ngModel)]="form.linha"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="6">
+          <ion-item>
+            <ion-input label="Lote" labelPlacement="floating" [(ngModel)]="form.lote"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-item>
+        <ion-input label="Crachá (Operador)" labelPlacement="floating" type="number" [(ngModel)]="form.cracha_op" (ionBlur)="buscaColaborador('op')"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input label="Nome" labelPlacement="floating" [(ngModel)]="form.nome_op" readonly></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input label="Cód. Equipamento" labelPlacement="floating" [(ngModel)]="form.cod_equip" (ionBlur)="buscaEquipamento()"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input label="Equipamento" labelPlacement="floating" [(ngModel)]="form.nome_equip" readonly></ion-input>
+      </ion-item>
+
+    <ion-row>
+        <ion-col size="6">
+          <ion-item>
+            <ion-input label="Data Inicial" labelPlacement="stacked" type="date" [(ngModel)]="form.data_inicio" readonly></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="6">
+          <ion-item>
+            <ion-input label="Início (Hora)" labelPlacement="stacked" type="time" [(ngModel)]="form.hora_inicio" readonly></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="6">
+          <ion-item>
+            <ion-input label="Data Final" labelPlacement="stacked" type="text" [(ngModel)]="form.data_fim" placeholder="Automático ao salvar" readonly></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="6">
+          <ion-item>
+            <ion-input label="Fim (Hora)" labelPlacement="stacked" type="text" [(ngModel)]="form.hora_fim" placeholder="Automático" readonly></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-item>
+        <ion-select label="Cód. Motivo" labelPlacement="floating" [(ngModel)]="form.cod_motivo">
+          <ion-select-option value="1.1">1.1 Quebra fabricação</ion-select-option>
+          <ion-select-option value="2.1">2.1 Set-up formato</ion-select-option>
+          <ion-select-option value="3.1">3.1 Troca teflon</ion-select-option>
+          <ion-select-option value="5.1">5.1 Ajuste manutenção mecânica</ion-select-option>
+          </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-select label="Cód. Parada" labelPlacement="floating" [(ngModel)]="form.cod_parada">
+          <ion-select-option value="1">1. Quebra</ion-select-option>
+          <ion-select-option value="2">2. Set-up</ion-select-option>
+          <ion-select-option value="3">3. Troca fer.</ion-select-option>
+          <ion-select-option value="4">4. Produção</ion-select-option>
+          </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-textarea label="Descrição" labelPlacement="floating" rows="3" [(ngModel)]="form.descricao"></ion-textarea>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <div *ngIf="aba === 'manutentor'" class="ion-padding">
+    <ion-list class="ion-no-margin" lines="full">
+      
+      <ion-item>
+        <ion-input label="Crachá (Manutentor 1)" labelPlacement="floating" [(ngModel)]="form.cracha_manu1" (ionBlur)="buscaColaborador('manu1')"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="form.nome_manu1">
+        <ion-input label="Nome" labelPlacement="floating" [(ngModel)]="form.nome_manu1" readonly></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input label="Crachá (Ajudante 2)" labelPlacement="floating" [(ngModel)]="form.cracha_manu2" (ionBlur)="buscaColaborador('manu2')"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="form.nome_manu2">
+        <ion-input label="Nome" labelPlacement="floating" [(ngModel)]="form.nome_manu2" readonly></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input label="Crachá (Ajudante 3)" labelPlacement="floating" [(ngModel)]="form.cracha_manu3" (ionBlur)="buscaColaborador('manu3')"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="form.nome_manu3">
+        <ion-input label="Nome" labelPlacement="floating" [(ngModel)]="form.nome_manu3" readonly></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-select label="Tarefa" labelPlacement="floating" [(ngModel)]="form.tarefa">
+          <ion-select-option value="Ajustar">Ajustar</ion-select-option>
+          <ion-select-option value="Consertar">Consertar</ion-select-option>
+          <ion-select-option value="Destravar">Destravar</ion-select-option>
+          <ion-select-option value="Limpar">Limpar</ion-select-option>
+          <ion-select-option value="Reapertar">Reapertar</ion-select-option>
+          <ion-select-option value="Regular">Regular</ion-select-option>
+          <ion-select-option value="Trocar">Trocar</ion-select-option>
+          <ion-select-option value="Acompanhar">Acompanhar</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-select label="Motivo" labelPlacement="floating" [(ngModel)]="form.motivo_manu">
+          <ion-select-option value="16">16 - Entupimento</ion-select-option>
+          <ion-select-option value="99">99 - Desgaste</ion-select-option>
+          <ion-select-option value="100">100 - Quebra</ion-select-option>
+          <ion-select-option value="101">101 - Folga</ion-select-option>
+          </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-select label="Causa" labelPlacement="floating" [(ngModel)]="form.causa">
+          <ion-select-option value="07">07 - Falha sensor</ion-select-option>
+          <ion-select-option value="16">16 - Vibração</ion-select-option>
+          <ion-select-option value="25">25 - Folga</ion-select-option>
+          <ion-select-option value="27">27 - Rolamento travado</ion-select-option>
+          </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-select label="Área" labelPlacement="floating" [(ngModel)]="form.area">
+          <ion-select-option value="Mecanica">Mecânica</ion-select-option>
+          <ion-select-option value="Eletrica">Elétrica</ion-select-option>
+          <ion-select-option value="Operacional">Operacional</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <div class="ion-margin-top ion-padding ion-text-center" style="background: #fff; border-radius: 8px;">
+        <ion-label color="medium" position="stacked">Status do Atendimento</ion-label>
+        <br><br>
+        
+        <ion-button [color]="isPausado ? 'success' : 'secondary'" expand="block" (click)="alternarPausa()">
+          <ion-icon [name]="isPausado ? 'play' : 'pause'" slot="start"></ion-icon>
+          <strong style="color: #000">
+            {{ isPausado ? 'RETOMAR SERVIÇO' : 'PAUSAR (AGUARDANDO PEÇA/LIBERAÇÃO)' }}
+          </strong>
+        </ion-button>
+
+        <p *ngIf="isPausado" style="color: var(--ion-color-primary); font-weight: bold;">
+          Atendimento paralisado no momento.
+        </p>
+      </div>
+
+      <div class="ion-margin-top ion-text-center">
+        <ion-button fill="outline" color="primary" (click)="gravarVideo()">
+          <ion-icon name="videocam" slot="start"></ion-icon>
+          Gravar Vídeo de Observação
+        </ion-button>
+      </div>
+    </ion-list>
+  </div>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-button expand="block" color="secondary" class="ion-margin" (click)="salvar()">
+      <strong style="color: #000">SALVAR RELATÓRIO</strong>
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

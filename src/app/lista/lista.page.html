@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Controle de Paradas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  
+  <ion-list-header>
+    <ion-label>Relatórios em Aberto</ion-label>
+  </ion-list-header>
+
+  <ion-list>
+    <ion-item *ngFor="let relatorio of relatorios" (click)="abrirRelatorio(relatorio.id)" button detail="true">
+      
+      <ion-icon name="warning-outline" slot="start" color="warning"></ion-icon>
+      
+      <ion-label>
+        <h2><strong>{{ relatorio.nome_equipamento }}</strong></h2>
+        <p>Linha: {{ relatorio.linha }} | Lote: {{ relatorio.lote }}</p>
+        <p>Início: {{ relatorio.data_hora_inicio | date:'dd/MM/yyyy HH:mm' }}</p>
+      </ion-label>
+      
+      <ion-badge color="warning" slot="end">Aberto</ion-badge>
+    </ion-item>
+
+    <ion-item *ngIf="relatorios.length === 0" lines="none">
+      <ion-label class="ion-text-center" color="medium">
+        <p>Nenhuma máquina parada no momento. Ótimo trabalho!</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="success" (click)="novoRelatorio()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>

@@ -1,2 +1,10 @@
 // For information on how to create your own theme, please refer to:
 // https://ionicframework.com/docs/theming/
+:root {
+  /* Identidade Visual Marilan */
+  --ion-color-primary: #DA251D; /* Vermelho */
+  --ion-color-secondary: #FFC600; /* Amarelo */
+  
+  /* Deixando o fundo do app levemente cinza para destacar os formulários brancos */
+  --ion-background-color: #f4f5f8;
+}
