@@ -1,0 +1,197 @@
+:host {
+    --cor-primaria: #FF6B00;
+    --cor-fundo: #FAFAFA;
+    --cor-cartao: #FFFFFF;
+    --cor-input: #F4F5F7;
+    --cor-texto: #111111;
+    --cor-texto-suave: #737373;
+  }
+  
+  .fundo-app {
+    --background: var(--cor-fundo);
+  }
+  
+  /* --- SEGMENTO (ABAS) --- */
+  .segment-wrapper {
+    background: var(--cor-input);
+    border-radius: 100px;
+    padding: 4px;
+    margin-bottom: 24px;
+  }
+  
+  ion-segment {
+    background: transparent;
+  }
+  
+  ion-segment-button {
+    --border-radius: 100px;
+    --color: var(--cor-texto-suave);
+    --color-checked: #FFFFFF;
+    --background-checked: var(--cor-texto); /* Botão ativo fica preto */
+    font-weight: 700;
+    letter-spacing: -0.2px;
+  }
+  
+  /* --- TÍTULOS E CARTÕES --- */
+  .section-title {
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--cor-texto-suave);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 0 0 12px 16px;
+  }
+  
+  .modern-card {
+    background: var(--cor-cartao);
+    border-radius: 24px;
+    padding: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    margin-bottom: 24px;
+  }
+  
+  /* --- CAMPOS (INPUTS) FORÇADOS PARA CLARO --- */
+  ion-input, ion-select, ion-textarea {
+    --background: var(--cor-input) !important;
+    --border-radius: 16px !important;
+    --padding-start: 16px !important;
+    --padding-end: 16px !important;
+    --color: var(--cor-texto) !important;
+    color: var(--cor-texto) !important;
+    margin-bottom: 12px;
+    font-size: 15px;
+    font-weight: 500;
+  }
+  
+  /* Remove aquela linha preta inferior chata do Material Design */
+  ion-item {
+    --highlight-height: 0;
+    --border-width: 0;
+  }
+  
+  /* --- BOX DE STATUS (INÍCIO DO REPARO) --- */
+  .status-box {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 107, 0, 0.1);
+    border-left: 4px solid var(--cor-primaria);
+    padding: 16px;
+    border-radius: 16px;
+    margin-bottom: 24px;
+    
+    ion-icon {
+      font-size: 28px;
+      color: var(--cor-primaria);
+      margin-right: 16px;
+    }
+    
+    span {
+      display: block;
+      font-size: 12px;
+      color: var(--cor-texto-suave);
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+    
+    strong {
+      font-size: 18px;
+      color: var(--cor-texto);
+    }
+  }
+  
+  /* --- BOTÕES --- */
+  .btn-primary {
+    --background: var(--cor-primaria);
+    --color: #FFFFFF;
+    --border-radius: 100px;
+    --box-shadow: 0 8px 24px rgba(255, 107, 0, 0.3);
+    height: 52px;
+    font-weight: 700;
+    margin: 0;
+  }
+  
+  .btn-secondary {
+    --background: #EAEAEA;
+    --color: var(--cor-texto);
+    --border-radius: 100px;
+    --box-shadow: none;
+    height: 52px;
+    font-weight: 700;
+  }
+  
+  .footer-clean {
+    background: var(--cor-fundo);
+    padding: 16px 24px 32px 24px;
+  }
+  
+  /* --- ESTADO VAZIO --- */
+  .empty-state {
+    text-align: center;
+    padding: 40px 16px;
+    
+    .icon-circle {
+      background: rgba(255, 107, 0, 0.1);
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px auto;
+      
+      ion-icon {
+        font-size: 40px;
+        color: var(--cor-primaria);
+      }
+    }
+    
+    h2 { font-weight: 800; color: var(--cor-texto); margin-bottom: 8px; }
+    p { color: var(--cor-texto-suave); font-size: 15px; margin-bottom: 32px; }
+  }
+
+  /* --- ADICIONE OU SUBSTITUA ESTA PARTE NO SEU SCSS --- */
+
+  .campo-form {
+    /* Força o fundo cinza claro absoluto */
+    --background: #F4F5F7 !important;
+    background: #F4F5F7 !important; 
+    
+    /* Força o texto e os placeholders a ficarem escuros */
+    --color: #111111 !important;
+    color: #111111 !important;
+    --placeholder-color: #737373 !important;
+    --placeholder-opacity: 1 !important;
+    
+    /* Estrutura, bordas e espaçamento */
+    --border-radius: 12px !important;
+    --padding-start: 16px !important;
+    --padding-end: 16px !important;
+    margin-bottom: 20px !important;
+    
+    font-size: 15px;
+    font-weight: 500;
+    
+    /* Remove linhas do Material Design */
+    --border-width: 0 !important;
+    --highlight-color-focused: transparent !important;
+  }
+  
+  /* BLINDAGEM EXTRA: Força a cor do texto digitado direto no Shadow DOM */
+  .campo-form::part(native) {
+    color: #111111 !important;
+  }
+  
+  /* BLINDAGEM EXTRA: Força o texto escolhido no Select a ficar escuro */
+  ion-select.campo-form::part(text) {
+    color: #111111 !important;
+  }
+  
+  /* Remove a linha de baixo extra nos Selects */
+  ion-select.campo-form::part(container) {
+    border-bottom: none !important;
+  }
+  
+  /* Remover a linha de baixo extra nos Selects */
+  ion-select.campo-form::part(container) {
+    border-bottom: none !important;
+  }

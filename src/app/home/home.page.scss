@@ -1,0 +1,183 @@
+/* ==============================================
+   TEMA MINIMALISTA (LARANJA E BRANCO)
+   Fixo - Sem Modo Escuro
+   ============================================== */
+
+   :host {
+    --cor-fundo: #FAFAFA;
+    --cor-primaria: #FF6B00; /* Laranja vibrante */
+    --cor-primaria-clara: #FFF0E5; /* Laranja super suave para fundo de ícone */
+    --cor-texto-forte: #111111;
+    --cor-texto-suave: #737373;
+    --cor-cartao: #FFFFFF;
+    --borda-suave: #F0F0F0;
+  }
+  
+  .fundo-minimalista {
+    --background: var(--cor-fundo);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  
+  /* --- CABEÇALHO --- */
+  .header-minimal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px;
+    background: transparent;
+  }
+  
+  .logo-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .logo-box {
+    background: var(--cor-primaria);
+    color: #FFFFFF;
+    font-weight: 800;
+    font-size: 15px;
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .brand-name {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--cor-texto-forte);
+    letter-spacing: -0.5px;
+  }
+  
+  .badge-terminal {
+    background: #FFFFFF;
+    border: 1px solid var(--borda-suave);
+    padding: 6px 14px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--cor-texto-suave);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+  }
+  
+  /* --- SAUDAÇÃO --- */
+  .greeting-section {
+    padding: 24px 24px 40px 24px;
+  
+    h1 {
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--cor-texto-forte);
+      margin: 0 0 8px 0;
+      letter-spacing: -1px;
+    }
+  
+    p {
+      font-size: 16px;
+      color: var(--cor-texto-suave);
+      margin: 0;
+      font-weight: 500;
+    }
+  }
+  
+  /* --- CARTÕES --- */
+  .cards-grid {
+    padding: 0 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .card-modern {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    border-radius: 24px; /* Cantos arredondados modernos */
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+  }
+  
+  .card-modern:active {
+    transform: scale(0.97); /* Efeito de "apertar" o botão */
+  }
+  
+  .icon-box {
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+  }
+  
+  .card-info {
+    flex: 1;
+    padding-left: 16px;
+  
+    h2 {
+      font-size: 17px;
+      font-weight: 700;
+      margin: 0 0 4px 0;
+    }
+  
+    p {
+      font-size: 14px;
+      margin: 0;
+    }
+  }
+  
+  .arrow-icon {
+    font-size: 20px;
+  }
+  
+  /* ==================================
+     VARIANTE 1: DESTAQUE (Laranja)
+     ================================== */
+  .primary-card {
+    background: var(--cor-primaria);
+    color: #FFFFFF;
+    box-shadow: 0 12px 32px rgba(255, 107, 0, 0.25); /* Sombra cor de laranja */
+  
+    .icon-box {
+      background: rgba(255, 255, 255, 0.2);
+      color: #FFFFFF;
+    }
+  
+    .card-info p {
+      color: rgba(255, 255, 255, 0.8);
+    }
+  
+    .arrow-icon {
+      color: #FFFFFF;
+      opacity: 0.8;
+    }
+  }
+  
+  /* ==================================
+     VARIANTE 2: SECUNDÁRIO (Branco)
+     ================================== */
+  .secondary-card {
+    background: var(--cor-cartao);
+    color: var(--cor-texto-forte);
+    border-color: var(--borda-suave);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+  
+    .icon-box {
+      background: var(--cor-primaria-clara);
+      color: var(--cor-primaria); /* Ícone Laranja */
+    }
+  
+    .card-info p {
+      color: var(--cor-texto-suave);
+    }
+  
+    .arrow-icon {
+      color: #CCCCCC;
+    }
+  }

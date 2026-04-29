@@ -1,10 +1,17 @@
-// For information on how to create your own theme, please refer to:
-// https://ionicframework.com/docs/theming/
 :root {
-  /* Identidade Visual Marilan */
-  --ion-color-primary: #DA251D; /* Vermelho */
-  --ion-color-secondary: #FFC600; /* Amarelo */
+  /* Cores da Identidade PaperLess */
+  --ion-color-primary: #FF6B00;
+  --ion-color-primary-rgb: 255, 107, 0;
   
-  /* Deixando o fundo do app levemente cinza para destacar os formulários brancos */
-  --ion-background-color: #f4f5f8;
+  /* Força o app inteiro a ser Claro/Minimalista */
+  --ion-background-color: #FAFAFA !important;
+  --ion-text-color: #111111 !important;
+}
+
+/* Removemos as transparências chatas do Material Design nos itens */
+ion-item {
+  --background: transparent !important;
+  --border-color: transparent !important;
+  --inner-padding-end: 0;
+  --padding-start: 0;
 }

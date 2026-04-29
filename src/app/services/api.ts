@@ -1,22 +1,28 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class Api {
-  private apiUrl = 'https://sua-api.com/api'; // URL do seu backend
+  // Endereço do seu backend Node.js
+  private apiUrl = 'http://localhost:3000/api'; 
 
   constructor(private http: HttpClient) { }
 
-  // Exemplo de GET
-  getUsers(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/users`);
+  // 1. Busca operador pelo crachá
+  buscarColaborador(cracha: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/colaborador/${cracha}`);
   }
 
-  // Exemplo de POST
-  createUser(userData: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/users`, userData);
+  // 2. Busca máquina pelo código
+  buscarEquipamento(codigo: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/equipamento/${codigo}`);
+  }
+
+  // 3. Salva o relatório no banco
+  salvarRelatorio(dados: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/relatorio`, dados);
   }
 }

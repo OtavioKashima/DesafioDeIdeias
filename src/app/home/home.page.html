@@ -1,0 +1,52 @@
+<ion-content class="fundo-minimalista">
+  
+  <div class="header-minimal">
+    <div class="logo-group">
+      <div class="logo-box">PL</div>
+      <span class="brand-name">PaperLess</span>
+    </div>
+    <div class="badge-terminal">Terminal Fixo</div>
+  </div>
+
+  <div class="greeting-section">
+    <h1>{{ saudacao }} 👋</h1>
+    <p>{{ dataAtual }}</p>
+  </div>
+
+  <div class="cards-grid">
+    
+    <div class="card-modern primary-card" (click)="navegar('/relatorio')">
+      <div class="icon-box">
+        <ion-icon name="document-text"></ion-icon>
+      </div>
+      <div class="card-info">
+        <h2>Registrar parada</h2>
+        <p>Preencher relatório de ocorrência</p>
+      </div>
+      <ion-icon name="chevron-forward" class="arrow-icon"></ion-icon>
+    </div>
+
+    <div class="card-modern secondary-card" (click)="navegar('/lista')">
+      <div class="icon-box">
+        <ion-icon name="build"></ion-icon>
+      </div>
+      <div class="card-info">
+        <h2>Relatórios abertos</h2>
+        <p>Chamados e campo manutentor</p>
+      </div>
+      <ion-icon name="chevron-forward" class="arrow-icon"></ion-icon>
+    </div>
+
+    <div class="card-modern secondary-card" (click)="navegar('/dashboard')">
+      <div class="icon-box">
+        <ion-icon name="stats-chart"></ion-icon>
+      </div>
+      <div class="card-info">
+        <h2>Dashboard</h2>
+        <p>Análise geral de paradas</p>
+      </div>
+      <ion-icon name="chevron-forward" class="arrow-icon"></ion-icon>
+    </div>
+
+  </div>
+</ion-content>

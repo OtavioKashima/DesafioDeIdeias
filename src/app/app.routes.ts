@@ -4,7 +4,7 @@ export const routes: Routes = [
   // 1. Rota principal: quando o app abre, ele joga o usuário para a lista
   {
     path: '',
-    redirectTo: 'lista',
+    redirectTo: 'home',
     pathMatch: 'full',
   },
   
@@ -26,5 +26,10 @@ export const routes: Routes = [
   {
     path: 'relatorio/:id',
     loadComponent: () => import('./relatorio/relatorio.page').then( m => m.RelatorioPage)
+  },
+  {
+    path: 'home',
+    loadComponent: () => import('./home/home.page').then( m => m.HomePage)
   }
+
 ];

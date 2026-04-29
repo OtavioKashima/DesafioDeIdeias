@@ -17,15 +17,20 @@ export const routes: Routes = [
           import('../lista/lista.page').then((m) => m.ListaPage),
       },
       {
+        path: 'home',
+        loadComponent: () =>
+          import('../home/home.page').then((m) => m.HomePage),
+      },
+      {
         path: '',
-        redirectTo: '/lista',
+        redirectTo: '/home',
         pathMatch: 'full',
       },
     ],
   },
   {
     path: '',
-    redirectTo: '/lista',
+    redirectTo: '/home',
     pathMatch: 'full',
   },
 ];
